@@ -17,6 +17,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 123
       MYSQL_DATABASE: calluhelp 
+      MYSQL_LOG_CONSOLE: "true"
 
   adminer:
     image: adminer
