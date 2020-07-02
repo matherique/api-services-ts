@@ -33,6 +33,7 @@ export class Endereco {
   @Column({ type: "tinyint", width: 3 })
   pais: string;
 
+  /*
   @OneToMany(
     () => Usuario,
     (usuario) => usuario.enderecoConnection,
@@ -41,4 +42,5 @@ export class Endereco {
 
   @JoinColumn({ name: "usuario_id" })
   usuarioConnection: Promise<Usuario>;
+ */
 }

@@ -3,7 +3,7 @@
       "target": "es2017",
       "lib": ["es6"],
       "allowJs": true,
-      "rootDir": "./src",
+      "rootDir": "./",
       "outDir": "./build/",
       "module": "commonjs",
       "removeComments": true, 
@@ -16,7 +16,7 @@
       "sourceMap": false,
       "forceConsistentCasingInFileNames": true,
       "strict": true,
-      "strictPropertyInitialization": true,
-      "strictNullChecks": false
+      "strictPropertyInitialization": false,
+      "strictNullChecks": true 
    }
 }

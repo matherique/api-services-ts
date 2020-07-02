@@ -32,10 +32,10 @@ export default class Usuario {
   status: number;
 
   @Column("float", { nullable: true })
-  classificacao: number;
+  classificacao?: number;
 
   @Column("varchar", { length: 128, nullable: true })
-  foto_perfil: string;
+  foto_perfil?: string;
 
   @CreateDateColumn()
   data_cadastro: string;
@@ -44,26 +44,28 @@ export default class Usuario {
   meio_de_login: number;
 
   @Column("varchar", { length: 128, nullable: true })
-  foto_confirmacao: string;
+  foto_confirmacao?: string;
 
   @Column("varchar", { length: 128, nullable: true })
-  foto_documento: string;
+  foto_documento?: string;
 
   @Column("varchar", { length: 128, nullable: true })
-  comprovante_residencia: string;
+  comprovante_residencia?: string;
 
   @Column("tinytext", { nullable: true })
-  forma_pagamento: number;
+  forma_pagamento?: number;
 
   @Column({ type: "tinyint", width: 2 })
   tipo_usuario: number;
 
+  /*
   @ManyToOne(
     () => Endereco,
     (endereco) => endereco.usuarioConnection,
-    { primary: true }
+    { nullable: true }
   )
 
   @JoinColumn({ name: "endereco_id" })
   enderecoConnection: Promise<Endereco>;
+  */
 }
