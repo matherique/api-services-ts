@@ -3,7 +3,7 @@ import {
   PrimaryGeneratedColumn,
   Column,
   JoinColumn,
-  OneToMany,
+  ManyToOne,
 } from "typeorm";
 import Usuario from "./usuario";
 
@@ -33,8 +33,7 @@ export class Endereco {
   @Column({ type: "tinyint", width: 3 })
   pais: string;
 
-  /*
-  @OneToMany(
+  @ManyToOne(
     () => Usuario,
     (usuario) => usuario.enderecoConnection,
     { primary: true }
@@ -42,5 +41,4 @@ export class Endereco {
 
   @JoinColumn({ name: "usuario_id" })
   usuarioConnection: Promise<Usuario>;
- */
 }

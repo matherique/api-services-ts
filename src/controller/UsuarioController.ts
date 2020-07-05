@@ -1,4 +1,4 @@
-import { getRepository} from "typeorm";
+import { getRepository } from "typeorm";
 import { Request, Response } from "express";
 
 import Usuario from "../entity/usuario";
@@ -13,11 +13,11 @@ class UsuarioController {
     const data = req.body;
     return res.status(200).json(data);
   }
-  
+
   async show(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
     const usuario = await getRepository(Usuario).findOne({ id: +id });
-    
+
     if (!usuario) return res.status(404).json();
 
     return res.status(200).json(usuario);
@@ -35,7 +35,7 @@ class UsuarioController {
     const data = req.body;
 
     const usuario = await getRepository(Usuario).findOne(id);
-    if (!usuario) return res.status(201).json({});
+    if (!usuario) return res.status(201).json({ message: "user dont found" });
 
     getRepository(Usuario).merge(usuario, data);
 
@@ -44,4 +44,4 @@ class UsuarioController {
   }
 }
 
-export default new UsuarioController;
+export default new UsuarioController();

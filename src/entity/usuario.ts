@@ -3,9 +3,12 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
-  ManyToOne,
+  OneToMany,
   JoinColumn,
+  BeforeInsert,
 } from "typeorm";
+import bycrypt from "bcrypt";
+
 import { Endereco } from "./endereco";
 
 @Entity({ name: "usuario" })
@@ -58,8 +61,7 @@ export default class Usuario {
   @Column({ type: "tinyint", width: 2 })
   tipo_usuario: number;
 
-  /*
-  @ManyToOne(
+  @OneToMany(
     () => Endereco,
     (endereco) => endereco.usuarioConnection,
     { nullable: true }
@@ -67,5 +69,11 @@ export default class Usuario {
 
   @JoinColumn({ name: "endereco_id" })
   enderecoConnection: Promise<Endereco>;
-  */
+
+  @BeforeInsert()
+  async encryptPassword(): Promise<void> {
+    this.senha = await bycrypt.hash(this.senha, 4);
+  }
+
 }
+
