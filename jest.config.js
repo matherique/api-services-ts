@@ -3,8 +3,7 @@ module.exports = {
   preset: "ts-jest",
   testEnvironment: "node",
   testMatch: [
-    "**/__tests__/**/*.[jt]s?(x)",
-    "**/?(*.)+(spec|test).[tj]s?(x)"
+    "**/__tests__/**/*.test.ts?(x)",
   ],
   testPathIgnorePatterns: ["/node_modules/"],
 };

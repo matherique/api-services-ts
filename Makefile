@@ -9,3 +9,7 @@ start:
 
 stop:
 	docker-compose down
+
+test:
+	LOGGER=false 
+	docker exec -it calluhelp_api_1 npm test

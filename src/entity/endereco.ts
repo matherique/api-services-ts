@@ -5,10 +5,10 @@ import {
   JoinColumn,
   ManyToOne,
 } from "typeorm";
-import Usuario from "./usuario";
+import UsuarioModel from "./usuario";
 
 @Entity({ name: "endereco" })
-export class Endereco {
+export default class EnderecoModel {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -34,11 +34,11 @@ export class Endereco {
   pais: string;
 
   @ManyToOne(
-    () => Usuario,
+    () => UsuarioModel,
     (usuario) => usuario.enderecoConnection,
     { primary: true }
   )
 
   @JoinColumn({ name: "usuario_id" })
-  usuarioConnection: Promise<Usuario>;
+  usuarioConnection: Promise<UsuarioModel>;
 }

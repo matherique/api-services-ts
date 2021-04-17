@@ -1,5 +1,4 @@
 {
-  "name": "development",
   "type": "mysql",
   "host": "db",
   "port": 3306,

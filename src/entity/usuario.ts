@@ -9,17 +9,17 @@ import {
 } from "typeorm";
 import bycrypt from "bcrypt";
 
-import { Endereco } from "./endereco";
+import EnderecoModel from "./endereco";
 
 @Entity({ name: "usuario" })
-export default class Usuario {
+export default class UsuarioModel {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column("varchar", { length: 128 })
   nome: string;
 
-  @Column("date")
+  @Column({ type: "datetime" })
   nascimento: string;
 
   @Column("varchar", { length: 128 })
@@ -62,18 +62,17 @@ export default class Usuario {
   tipo_usuario: number;
 
   @OneToMany(
-    () => Endereco,
+    () => EnderecoModel,
     (endereco) => endereco.usuarioConnection,
     { nullable: true }
   )
 
   @JoinColumn({ name: "endereco_id" })
-  enderecoConnection: Promise<Endereco>;
+  enderecoConnection: Promise<EnderecoModel>;
 
   @BeforeInsert()
   async encryptPassword(): Promise<void> {
-    this.senha = await bycrypt.hash(this.senha, 4);
+    this.senha = await bycrypt.hash(this.senha, 8);
   }
 
 }
-
